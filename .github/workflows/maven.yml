@@ -29,6 +29,6 @@ jobs:
         run: mvn -B clean package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -Dregistry=https://maven.pkg.github.com/aegean-framework -Dtoken=$GITHUB_TOKEN
+        run: mvn deploy -Dregistry=https://maven.pkg.github.com/easy-utils/easy-weprogram -Dtoken=$GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ github.token }}

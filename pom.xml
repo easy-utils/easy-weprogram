@@ -84,9 +84,9 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>Repository</name>
-            <url>https://maven.pkg.github.com/easy-utils</url>
+            <id>easy-weprogram</id>
+            <name>easy weprogram</name>
+            <url>https://maven.pkg.github.com/easy-utils/easy-weprogram</url>
         </repository>
     </distributionManagement>
 
