@@ -1,11 +1,12 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
 
-name: Maven Package
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
 
 on:
   push:
-    branches: master
+    branches: [ master ]
 
 jobs:
   build:
@@ -18,12 +19,16 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-          server-id: github
+
+      - name: Set up Maven Configuration
+        run: echo "<settings><servers><server><id>easy-weprogram</id><username>1919022585@qq.com</username><password>$GITHUB_TOKEN</password></server></servers><profiles><profile><id>rainyblossom</id><repositories><repository><id>central</id><url>https://repo1.maven.org/maven2</url><releases><enabled>true</enabled></releases><snapshots><enabled>true</enabled></snapshots></repository><repository><id>easy-weprogram</id><name>easy weprogram</name><url>https://maven.pkg.github.com/easy-utils/easy-weprogram</url></repository></repositories></profile></profiles><activeProfiles><activeProfile>rainyblossom</activeProfile></activeProfiles></settings>" > ~/.m2/settings.xml
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Build with Maven
-        run: mvn -B clean install package --file pom.xml
+        run: mvn -B clean package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -Dregistry=https://maven.pkg.github.com/easy-utils -Dtoken=GH_TOKEN
+        run: mvn deploy -Dregistry=https://maven.pkg.github.com/aegean-framework -Dtoken=$GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ github.token }}
