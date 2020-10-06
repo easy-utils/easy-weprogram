@@ -21,12 +21,10 @@ package club.easyutils.weprogram.model.auth.request;
  */
 
 import club.easyutils.weprogram.model.BaseRequestModel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthCodeToSessionRequestModel extends BaseRequestModel {

@@ -1,2 +1,8 @@
-# easy-weprogram
-更好用的微信小程序 API 工具包（For Java Developer）
+### Easy Weprogram  ![avatar](https://img.shields.io/badge/寄雨瑶花-易用工具系列-green)
+
+![avatar](https://img.shields.io/github/issues/easy-utils/easy-weprogram)
+![avatar](https://img.shields.io/github/forks/easy-utils/easy-weprogram)
+![avatar](https://img.shields.io/github/stars/easy-utils/easy-weprogram)
+![avatar](https://img.shields.io/github/license/easy-utils/easy-weprogram)
+
+<img src="https://resource.rainyblossom.com/image/opensource/website/eu_logo-removebg-preview.png" width="80%">

@@ -21,14 +21,12 @@ package club.easyutils.weprogram.model.qr.request;
  */
 
 import club.easyutils.weprogram.model.BaseRequestModel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import java.util.Map;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class QrUnlimitedRequestModel extends BaseRequestModel {

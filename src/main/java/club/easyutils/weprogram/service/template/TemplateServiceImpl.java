@@ -34,14 +34,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class TemplateServiceImpl implements TemplateService{
 
+    @Override
     public TemplateAddResponseModel addTemplate(TemplateAddRequestModel requestModel) {
         return HttpUtil.getRestTemplate().postForEntity(TemplateUrlConfig.ADD_TEMPLATE.getUrl(), JSONObject.toJSONString(requestModel), TemplateAddResponseModel.class).getBody();
     }
 
+    @Override
     public TemplateGetResponseModel getTemplate(TemplateGetRequestModel requestModel) {
         return HttpUtil.getRestTemplate().getForEntity(TemplateUrlConfig.GET_TEMPLATE_LIST.getUrl(), TemplateGetResponseModel.class).getBody();
     }
 
+    @Override
     public TemplateSendResponseModel send(TemplateSendRequestModel requestModel) {
         return HttpUtil.getRestTemplate().postForEntity(TemplateUrlConfig.SEND.getUrl(), JSONObject.toJSONString(requestModel), TemplateSendResponseModel.class).getBody();
     }
