@@ -51,7 +51,7 @@ STEP 3：重写配置类，注入AppID 和 AppSecret
 
 ## 项目开发计划
 
-点击链接访问：[Easy Utils - Easy WeProgram 开发计划](https://www.yuque.com/easy-utils/easy-weprogram)
+点击链接访问：[Easy Utils - Easy WeProgram 开发计划](https://www.yuque.com/easy-utils/easy-weprogram/ag5n53)
 
 ## 联系作者
 
