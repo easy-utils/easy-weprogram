@@ -32,6 +32,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 @Component
@@ -55,7 +56,7 @@ public class TokenUtil {
     public static String getAccessToken() {
         String value = null;
         if (null != tokenUtil.tokenConfig){
-            Cache<String, String> cache = CacheBuilder.newBuilder().maximumSize(7200).build();
+            Cache<String, String> cache = CacheBuilder.newBuilder().maximumSize(1).expireAfterWrite(7200, TimeUnit.SECONDS).build();
             try {
                 value =  cache.get(GuavaConstant.ACCESS_TOKEN.getCacheName(), new Callable<String>() {
                     @Override
