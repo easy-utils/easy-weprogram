@@ -9,7 +9,7 @@
     <groupId>club.easy-utils</groupId>
     <artifactId>easy-weprogram</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>0.0.2-SNAOSHOT</version>
 
     <!-- 描述信息 -->
     <name>easy weprogram</name>
@@ -45,21 +45,14 @@
 
     <!-- 发布管理，要想发布到中央库就必须要配置的一个节点，以下两个链接可以从issue审核结果中找到 -->
     <!-- 其中id为自定义，后面会在maven/config/settings.xml中配置对应的服务器信息 -->
-<!--    <distributionManagement>-->
-<!--        <snapshotRepository>-->
-<!--            <id>sonatype</id>-->
-<!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-<!--        </snapshotRepository>-->
-<!--        <repository>-->
-<!--            <id>sonatype</id>-->
-<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
-<!--        </repository>-->
-<!--    </distributionManagement>-->
     <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>easy-weprogram</id>
-            <name>easy weprogram</name>
-            <url>https://maven.pkg.github.com/easy-utils/easy-weprogram</url>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
 
@@ -75,7 +68,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-<!--        <java.home>/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home</java.home>-->
+        <java.home>/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home</java.home>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <license.licenseName>apache_v2</license.licenseName>
@@ -163,18 +156,18 @@
                 </configuration>
             </plugin>
             <!-- 以下都为上传jar默认配置不做修改 -->
-<!--            <plugin>-->
-<!--                <groupId>org.sonatype.plugins</groupId>-->
-<!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
-<!--                <version>1.6.8</version>-->
-<!--                &lt;!&ndash; autoReleaseAfterClose的值为true，则脚本会自动完成在平台上close、release的操作，至此你将成功发布了 &ndash;&gt;-->
-<!--                <extensions>true</extensions>-->
-<!--                <configuration>-->
-<!--                    <serverId>sonatype</serverId>-->
-<!--                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
-<!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <!-- autoReleaseAfterClose的值为true，则脚本会自动完成在平台上close、release的操作，至此你将成功发布了 -->
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -188,20 +181,20 @@
                 </configuration>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-gpg-plugin</artifactId>-->
-<!--                <version>1.5</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>sign-artifacts</id>-->
-<!--                        <phase>verify</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>sign</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -217,26 +210,26 @@
                 </executions>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
-<!--                <version>2.9</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>attach-javadocs</id>-->
-<!--                        <goals>-->
-<!--                            <goal>jar</goal>-->
-<!--                        </goals>-->
-<!--                        &lt;!&ndash; JDK8必须使用下面的配置 &ndash;&gt;-->
-<!--                        <configuration>-->
-<!--                            <encoding>UTF-8</encoding>-->
-<!--                            <charset>UTF-8</charset>-->
-<!--                            <additionalparam>-Xdoclint:none</additionalparam>-->
-<!--                            <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <!-- JDK8必须使用下面的配置 -->
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <charset>UTF-8</charset>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                            <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

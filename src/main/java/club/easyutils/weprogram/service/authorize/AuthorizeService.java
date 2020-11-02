@@ -1,4 +1,4 @@
-package club.easyutils.weprogram.service.auth;
+package club.easyutils.weprogram.service.authorize;
 
 /*-
  * Starttag
@@ -27,7 +27,7 @@ import club.easyutils.weprogram.model.auth.response.AuthCodeToSessionResponseMod
 import club.easyutils.weprogram.model.auth.response.AuthPaidUnionIdResponseModel;
 import club.easyutils.weprogram.model.auth.response.AuthTokenResponseModel;
 
-public interface AuthService {
+public interface AuthorizeService {
 
     /**
      * 登录凭证校验

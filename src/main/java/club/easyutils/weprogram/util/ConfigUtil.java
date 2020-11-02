@@ -21,8 +21,6 @@ package club.easyutils.weprogram.util;
  */
 
 
-import java.text.MessageFormat;
-
 public class ConfigUtil {
 
     private static String ACCESS_TOKEN = "ACCESS_TOKEN";

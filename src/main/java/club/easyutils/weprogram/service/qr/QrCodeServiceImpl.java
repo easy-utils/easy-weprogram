@@ -32,7 +32,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class QrCodeServiceImpl implements QrCodeService{
+public class QrCodeServiceImpl implements QrCodeService {
 
     @Override
     public QrResponseModel getCreate(QrCreateRequestModel requestModel) {

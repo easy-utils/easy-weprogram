@@ -24,7 +24,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import club.easyutils.weprogram.constant.GuavaConstant;
 import club.easyutils.weprogram.model.auth.request.AuthTokenRequestModel;
-import club.easyutils.weprogram.service.auth.AuthService;
+import club.easyutils.weprogram.service.authorize.AuthorizeService;
 import club.easyutils.weprogram.service.token.TokenConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,7 +41,7 @@ public class TokenUtil {
     private static Logger logger = Logger.getLogger(TokenUtil.class.getName());
 
     @Autowired
-    private AuthService authService;
+    private AuthorizeService authorizeService;
 
     @Autowired(required = false)
     private TokenConfig tokenConfig;
@@ -71,6 +71,6 @@ public class TokenUtil {
 
     private static String generateAccessToken(String appId, String appSecret){
         AuthTokenRequestModel requestModel = new AuthTokenRequestModel(appId, appSecret);
-        return tokenUtil.authService.getAccessToken(requestModel).getAccess_token();
+        return tokenUtil.authorizeService.getAccessToken(requestModel).getAccess_token();
     }
 }

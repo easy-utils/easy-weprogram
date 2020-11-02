@@ -1,4 +1,4 @@
-package club.easyutils.weprogram.service.auth;
+package club.easyutils.weprogram.service.authorize;
 
 /*-
  * Starttag
@@ -33,7 +33,7 @@ import club.easyutils.weprogram.model.auth.response.AuthTokenResponseModel;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthServiceImpl implements AuthService{
+public class AuthorizeServiceImpl implements AuthorizeService {
 
     @Override
     public AuthCodeToSessionResponseModel code2Session(AuthCodeToSessionRequestModel requestModel) {

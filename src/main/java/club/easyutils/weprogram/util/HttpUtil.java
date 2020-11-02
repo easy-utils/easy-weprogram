@@ -25,9 +25,14 @@ import club.easyutils.weprogram.model.BaseResponseModel;
 import cn.hutool.core.lang.Validator;
 import com.alibaba.fastjson.JSONObject;
 import club.easyutils.weprogram.converter.CustomHttpMessageConverter;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-public class HttpUtil<T> {
+public class HttpUtil {
 
     private static RestTemplate restTemplate;
 
@@ -39,14 +44,16 @@ public class HttpUtil<T> {
         return restTemplate;
     }
 
-    public static BaseResponseModel doPost(String url, BaseRequestModel baseRequestModel){
-        return getRestTemplate().postForEntity(url, JSONObject.toJSONString(baseRequestModel), BaseResponseModel.class).getBody();
+    public static ResponseEntity doPost(String url, BaseRequestModel baseRequestModel, Class tClass){
+        HttpHeaders headers = new HttpHeaders();
+        MediaType mediaType = MediaType.parseMediaType("application/json; charset=UTF-8");
+        headers.setContentType(mediaType);
+        HttpEntity httpEntity = new HttpEntity(baseRequestModel, headers);
+        return getRestTemplate().postForEntity(url, httpEntity, tClass);
     }
 
-    public static BaseResponseModel doGet(String url){
-        return getRestTemplate().getForEntity(url, BaseResponseModel.class).getBody();
+    public static ResponseEntity doGet(String url,Class tClass){
+        return getRestTemplate().getForEntity(url, tClass);
     }
-
-
 
 }

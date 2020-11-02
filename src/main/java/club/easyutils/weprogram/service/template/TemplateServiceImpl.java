@@ -32,7 +32,7 @@ import club.easyutils.weprogram.model.template.response.TemplateSendResponseMode
 import org.springframework.stereotype.Service;
 
 @Service
-public class TemplateServiceImpl implements TemplateService{
+public class TemplateServiceImpl implements TemplateService {
 
     @Override
     public TemplateAddResponseModel addTemplate(TemplateAddRequestModel requestModel) {
