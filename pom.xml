@@ -9,7 +9,7 @@
     <groupId>club.easy-utils</groupId>
     <artifactId>easy-weprogram</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.2-SNAOSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
 
     <!-- 描述信息 -->
     <name>easy weprogram</name>
