@@ -37,7 +37,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthorizeServiceImpl implements AuthorizeService {
 
-    @Autowired(required = false)
+    @Autowired
     private TokenConfig tokenConfig;
 
     @Override
