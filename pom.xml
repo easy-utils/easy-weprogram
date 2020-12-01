@@ -55,6 +55,19 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>releases</id>-->
+<!--            <name>nexus-releases</name>-->
+<!--            <url>http://itcentral.baozun.cn/nexus/content/repositories/releases/</url>-->
+<!--        </repository>-->
+
+<!--        <snapshotRepository>-->
+<!--            <id>snapshots</id>-->
+<!--            <name>nexus-snapshots</name>-->
+<!--            <url>http://itcentral.baozun.cn/nexus/content/repositories/snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 
     <!-- 开发者列表，个人的话就写自己，团队就罗列所有成员 -->
     <developers>

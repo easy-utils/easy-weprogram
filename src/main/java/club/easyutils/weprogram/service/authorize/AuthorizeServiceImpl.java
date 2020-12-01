@@ -45,7 +45,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         String url = AuthConfig.AUTH_CODE_TO_SESSION.getUrl()
                 .replace("APPID", tokenConfig.getAppId())
                 .replace("SECRET", tokenConfig.getAppSecret())
-                .replace("JSCODE", "authorization_code");
+                .replace("JSCODE", requestModel.getJs_code());
         return HttpUtil.getRestTemplate().getForObject(url, AuthCodeToSessionResponseModel.class);
     }
 
