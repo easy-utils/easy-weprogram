@@ -1,6 +1,11 @@
 <img src="https://resource.rainyblossom.com/image/opensource/website/eu_logo-removebg-preview.png" width="80%">
 
-# Easy Weprogram  ![Logo](https://img.shields.io/badge/寄雨瑶花-易用工具系列-green) ![Build](http://api.travis-ci.org/easy-utils/easy-weprogram.svg?branch=master)
+# Easy Weprogram  ![Logo](https://img.shields.io/badge/寄雨瑶花-易用工具系列-green) 
+
+<img src="https://img.shields.io/maven-central/v/club.easy-utils/easy-weprogram.svg?label=Maven%20Central">
+<img src="https://img.shields.io/badge/JDK-8-green.svg">
+<img src="http://api.travis-ci.org/easy-utils/easy-weprogram.svg?branch=master">
+<br/><br/>
 
 > [Easy Utils](https://east-utils.club) 易用工具包系列，提供了电子商务相关领域内，基于各产品官方文档的基础封装包，Java 开发人员可以通过简单地引用来实现产品的快速接入，帮助加速软件功能开发进程，避免重复且无意义的工作。
 

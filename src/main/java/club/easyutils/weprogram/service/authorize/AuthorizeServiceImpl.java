@@ -22,25 +22,30 @@ package club.easyutils.weprogram.service.authorize;
 
 import club.easyutils.weprogram.model.auth.request.AuthPaidUnionIdRequestModel;
 import club.easyutils.weprogram.model.auth.request.AuthTokenRequestModel;
+import club.easyutils.weprogram.service.token.TokenConfig;
 import club.easyutils.weprogram.util.HttpUtil;
 import cn.hutool.core.lang.Validator;
 import club.easyutils.weprogram.config.AuthConfig;
-import club.easyutils.weprogram.config.TokenConfig;
+import club.easyutils.weprogram.config.AccessTokenConfig;
 import club.easyutils.weprogram.model.auth.request.AuthCodeToSessionRequestModel;
 import club.easyutils.weprogram.model.auth.response.AuthCodeToSessionResponseModel;
 import club.easyutils.weprogram.model.auth.response.AuthPaidUnionIdResponseModel;
 import club.easyutils.weprogram.model.auth.response.AuthTokenResponseModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthorizeServiceImpl implements AuthorizeService {
 
+    @Autowired(required = false)
+    private TokenConfig tokenConfig;
+
     @Override
     public AuthCodeToSessionResponseModel code2Session(AuthCodeToSessionRequestModel requestModel) {
         String url = AuthConfig.AUTH_CODE_TO_SESSION.getUrl()
-                .replace("APPID", requestModel.getAppid())
-                .replace("SECRET", requestModel.getSecret())
-                .replace("JSCODE",requestModel.getJs_code());
+                .replace("APPID", tokenConfig.getAppId())
+                .replace("SECRET", tokenConfig.getAppSecret())
+                .replace("JSCODE", "authorization_code");
         return HttpUtil.getRestTemplate().getForObject(url, AuthCodeToSessionResponseModel.class);
     }
 
@@ -64,7 +69,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
 
     @Override
     public AuthTokenResponseModel getAccessToken(AuthTokenRequestModel requestModel) {
-        String url = TokenConfig.TOKEN.getUrl()
+        String url = AccessTokenConfig.TOKEN.getUrl()
                 .replace("APPID", requestModel.getAppid())
                 .replace("APPSECRET", requestModel.getSecret());
         return HttpUtil.getRestTemplate().getForEntity(url, AuthTokenResponseModel.class).getBody();
