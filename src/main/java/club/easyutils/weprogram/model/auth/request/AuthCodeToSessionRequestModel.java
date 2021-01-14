@@ -32,13 +32,11 @@ public class AuthCodeToSessionRequestModel extends BaseRequestModel {
     /**
      * 小程序 appId
      */
-    @NonNull
     private String appid;
 
     /**
      * 小程序 appSecret
      */
-    @NonNull
     private String secret;
 
     /**
