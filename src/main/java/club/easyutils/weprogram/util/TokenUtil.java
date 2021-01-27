@@ -72,6 +72,7 @@ public class TokenUtil {
 
     private static String generateAccessToken(String appId, String appSecret){
         AuthTokenRequestModel requestModel = new AuthTokenRequestModel(appId, appSecret);
-        return tokenUtil.authorizeService.getAccessToken(requestModel).getAccess_token();
+        String accessToken = tokenUtil.authorizeService.getAccessToken(requestModel).getAccess_token();
+        return accessToken;
     }
 }
