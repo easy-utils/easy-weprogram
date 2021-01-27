@@ -40,6 +40,8 @@ public class TokenUtil {
 
     private static Logger logger = Logger.getLogger(TokenUtil.class.getName());
 
+    private static Cache<String, String> cache = CacheBuilder.newBuilder().maximumSize(1).expireAfterWrite(7000, TimeUnit.SECONDS).build();
+
     @Autowired
     private AuthorizeService authorizeService;
 
@@ -56,7 +58,6 @@ public class TokenUtil {
     public static String getAccessToken() {
         String value = null;
         if (null != tokenUtil.tokenConfig){
-            Cache<String, String> cache = CacheBuilder.newBuilder().maximumSize(1).expireAfterWrite(7200, TimeUnit.SECONDS).build();
             try {
                 value =  cache.get(GuavaConstant.ACCESS_TOKEN.getCacheName(), new Callable<String>() {
                     @Override
