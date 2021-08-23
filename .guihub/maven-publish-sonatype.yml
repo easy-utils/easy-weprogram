@@ -1,0 +1,41 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
+
+name:  Maven Package Sonatype
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+          server-id: sonatype
+
+      - name: Generate settings.xml for Maven Builds
+        uses: whelk-io/maven-settings-xml-action@v14
+        with:
+          repositories: '[{ "id": "sonatype", "url": "https://oss.sonatype.org/content/repositories/snapshots/" }]'
+          servers: '[{ "id": "sonatype", "username": "${{ secrets.MAVEN_SERVER_USERNAME }}", "password": "${{ secrets.MAVEN_SERVER_PASSWORD }}" }]'
+
+      - name: Import GPG Config
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PRIVATE_PASSPHRASE }}
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml -P sonatype
+
+      - name: Publish to GitHub Packages Apache Maven
+        run: mvn deploy --file pom.xml  -P sonatype
